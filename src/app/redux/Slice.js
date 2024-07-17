@@ -1,7 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-    user: JSON.parse(localStorage.getItem('data')) ? JSON.parse(localStorage.getItem('data')) : []
+    user: JSON.parse(localStorage.getItem('product')) ? JSON.parse(localStorage.getItem('product')) : []
 }
 
 const Adduser = createSlice({
@@ -14,7 +14,7 @@ const Adduser = createSlice({
                 order: action.payload
             }
             state.user.push(data);
-            localStorage.setItem('data', JSON.stringify(state.user));
+            localStorage.setItem('product', JSON.stringify(state.user));
         },
 
         remove:(state, action)=> {
@@ -23,7 +23,7 @@ const Adduser = createSlice({
             })
 
             localStorage.removeItem(action.payload);
-            localStorage.setItem('data', JSON.stringify(data));
+            localStorage.setItem('product', JSON.stringify(data));
 
             state.user = data;
         }

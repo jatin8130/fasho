@@ -111,10 +111,6 @@ const Home = () => {
   const [Show, setShow] = useState(null);
   const [procate, setprocate] = useState(all)
 
-  const handelactive = (e) => {
-    setactive(e);
-  }
-
   const mystyle = {
     pointerEvent: 'none',
     cursor: 'not-allowed'
@@ -139,7 +135,7 @@ const Home = () => {
             {
               banner.map((item, ind) => {
                 return (
-                  <div>
+                  <div key={ind}>
                     <div className='carousel-data'>
                       <h1 className='carousel-heading'>{item.label}<br />{item.label2}</h1>
                       <p className='carousel-para'>{item.para}</p>
@@ -157,17 +153,17 @@ const Home = () => {
           <div className='our-product'>
             <p className='product'>Our Products</p>
             <div className='product-item'>
-              <p className={`product-name ${active == 'all' ? 'active' : null}`} onClick={() => {handelactive('all'), setprocate(all)}}>All</p>
+              <p className={`product-name ${active == 'all' ? 'active' : null}`} onClick={() => {setactive('all'), setprocate(all)}}>All</p>
               <hr className='lines' />
-              <p className={`product-name ${active == 'women' ? 'active' : null}`} onClick={() => {handelactive('women'), setprocate(women)}}>For women</p>
+              <p className={`product-name ${active == 'women' ? 'active' : null}`} onClick={() => {setactive('women'), setprocate(women)}}>For women</p>
               <hr className='lines' />
-              <p className={`product-name ${active == 'men' ? 'active' : null}`} onClick={() => {handelactive('men'), setprocate(men)}}>For men</p>
+              <p className={`product-name ${active == 'men' ? 'active' : null}`} onClick={() => {setactive('men'), setprocate(men)}}>For men</p>
               <hr className='lines' />
-              <p className={`product-name ${active == 'child' ? 'active' : null}`} onClick={() => {handelactive('child'), setprocate(child)}}>For children</p>
+              <p className={`product-name ${active == 'child' ? 'active' : null}`} onClick={() => {setactive('child'), setprocate(child)}}>For children</p>
               <hr className='lines' />
-              <p className={`product-name ${active == 'mas' ? 'active' : null}`} onClick={() => {handelactive('mas'), setprocate(mas)}}>X-Mas</p>
+              <p className={`product-name ${active == 'mas' ? 'active' : null}`} onClick={() => {setactive('mas'), setprocate(mas)}}>X-Mas</p>
               <hr className='lines' />
-              <p className={`product-name ${active == 'valentine' ? 'active' : null}`} onClick={() => {handelactive('valentine'), setprocate(valentine)}}>Valentine's day</p>
+              <p className={`product-name ${active == 'valentine' ? 'active' : null}`} onClick={() => {setactive('valentine'), setprocate(valentine)}}>Valentine's day</p>
             </div>
           </div>
 
@@ -196,7 +192,7 @@ const Home = () => {
                         <select className='product-size'>
                           {
                             item.listsize.map((item, ind) => {
-                              return <option>{item.size}</option>
+                              return <option key={ind}>{item.size}</option>
                             })
                           }
                         </select>

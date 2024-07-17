@@ -688,7 +688,7 @@ const Nav = () => {
               {
                 language.map((item, ind) => {
                   return (
-                    <li className='mob-lang-li'>
+                    <li key={ind} className='mob-lang-li'>
                       <div className='mob-lang-arrow'>
                         <Link style={{ fontWeight: 500 }} className='mob-nav-li-client' href='#'>{item.label}</Link>
 
