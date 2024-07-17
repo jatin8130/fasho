@@ -1,0 +1,415 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.carousel{
+    width: 100%;
+    height: fit-content;
+}
+
+.carousel-data{
+    top: 20%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 15.2cm;
+    gap: 30px;
+    margin-left: 4cm;
+}
+
+.carousel-heading{
+    font-size: 80px;
+    line-height: 80px;
+}
+
+.carousel-para{
+    font-size: 18px;
+}
+
+.carousel-btn{
+    width: fit-content;
+    font-size: 12px;
+    color: black;
+    border: 1px solid rgb(91, 89, 89);
+    padding: 8px 30px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.carousel-btn:hover{
+    border: 1px solid #FF6701;
+    background-color: #FF6701;
+    color: white;
+}
+
+.carousel-img{
+    width: 100%;
+    height: auto;
+}
+
+.our-product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.product{
+    font-size: 24px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.product-item{
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid #c5c3c3;
+    align-items: center;
+}
+
+.product-name{
+    font-size: 14px;
+    font-weight: 700;
+    color: #878585;
+    padding: 10px 15px;
+}
+
+.product-name:hover{
+    background-color: #FF6701;
+    color: white;
+}
+
+.lines{
+    height: 25px;
+}
+
+.active{
+    background-color: #FF6701;
+    color: white;
+}
+
+.homeclient{
+    margin: 1cm 4cm;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-list{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    max-width: 5cm;
+    gap: 15px;
+    border-radius: 5px;
+    transition: linear 0.5s ease-in-out;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.product-list:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.118), 0 6px 20px 0 rgba(0, 0, 0, 0.101);
+}
+
+.product-img{
+    height: 4.5cm;
+    width: auto;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.product-names{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.product-price{
+    color: rgb(234, 59, 2);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.laptop-size-color{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mobile-size-color{
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-size{
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid #d1d0d0;
+    padding: 10px;
+    width: 100%;
+    color: #7f7e7e;
+}
+
+.product-color{
+    height: 0.7cm;
+    width: 0.7cm;
+}
+
+.stock{
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px;
+    color: #7f7e7e;
+    background-color: transparent;
+    border: 2px solid #dcd5d5;
+    border-radius: 8px;
+    letter-spacing: 1px;
+}
+
+.stock:hover{
+    background-color: #FF6701;
+    border: 2px solid #FF6701;
+    color: white;
+}
+
+.colloction{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    width: 100vw;
+}
+
+.colloction-one{
+    position: relative;
+}
+
+.colloction-imgs{
+    max-width: 100%;
+}
+
+.colloction-detail{
+    position: absolute;
+    top: 70px;
+    left: 40px;
+}
+
+.colorful{
+    color: #000;
+    font-size: 36px;
+    max-width: 285px;
+    font-weight: 700;
+    margin: 6px 0 31px;
+}
+
+.discover{
+    padding: 8px 15px;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    min-width: 160px;
+    color: #000;
+    border-radius: 6px;
+    border: 2px solid #c7ced5;
+    background: transparent;
+    cursor: pointer;
+}
+
+.colloction-two{
+    position: relative;
+    max-width: 100%;
+}
+
+.colloction-details{
+    position: absolute;
+    top: 8%;
+    left: 20px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.we-recommended{
+    text-align: center;
+    margin-top: 50px;
+    font-size: large;
+}
+
+.brand{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;  
+    overflow: scroll;  
+    scrollbar-width: none;
+}
+
+@media screen and (max-width: 1260px) {
+    .homeclient{
+        margin: 1cm;
+        flex-flow: row wrap;
+    }
+}
+
+@media screen and (max-width: 1182px) {
+    .home{
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .carousel-data{
+        top: 10%;
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 1040px) {
+    .carousel-data{
+        margin-left: 1cm;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .carousel-btn{
+        display: none;
+    }
+
+    .homeclient{
+        margin: 1cm 10px 10px 10px;
+        flex-flow: row wrap;
+    }
+
+    .product-list{
+        width: 5.8cm;
+    }
+
+    .laptop-size-color{
+        display: none;
+    }
+
+    .mobile-size-color{
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .homeclient{
+        gap: 10px;
+    }
+
+    .colloction{
+        padding: 10px;
+        margin: 0%;
+    }
+
+    .colloction-one{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .colloction-detail, .colloction-details{
+        position: relative;
+        top: 10px;
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .carousel-para{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .carousel-data{
+        top: 0%;
+    }
+
+    .our-product{
+        margin: 0px 15px;
+    }
+
+    .lines{
+        display: none;
+    }
+
+    .homeclient{
+        gap: 5px;
+    }
+
+    .product-item{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .product-name, .product-names, .product-namess{
+        text-align: center;
+        width: 100%;
+    }
+
+    .product-names:hover{
+        border-radius: 8px 8px 0px 0px;
+    }
+
+    .product-namess:hover{
+        border-radius: 0px 0px 8px 8px;
+    }
+
+    .colloction{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .colorful{
+        font-size: 20px;
+    }
+
+    .colloction-details{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .carousel-data{
+        top: -10px;
+    }
+
+    .homeclient{
+        gap: 5px;
+    }
+
+    .product-list{
+        width: 4.2cm;
+    }
+
+    .product-img{
+        height: 3.5cm;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .carousel-data{
+        top: 10%;
+        margin-left: 10px;
+    }
+
+    .carousel-heading{
+        font-size: 40px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (max-width: 344px) {
+    .homeclient{
+        margin: 1cm 3px 3px 3px;
+    }
+
+    .product-list{
+        width: 4cm;
+    }
+}

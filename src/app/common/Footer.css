@@ -1,0 +1,197 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.Footer{
+    margin-top: 2cm;
+    position: absolute;
+    width: 100%;
+}
+
+.footer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-1{
+    position: absolute;
+    z-index: 888;
+    background-color: #FF6701;
+    bottom: -50px;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0px 10px;
+    border-radius: 10px;
+    align-items: center;
+    padding: 10px;
+    gap: 40px;
+}
+
+.send-get{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    color: white;
+}
+
+.send{
+    font-size: 1.2cm;
+}
+
+.email-check-agree{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.email-img{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    height: 1.2cm;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.email{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.send-btn{
+    font-size: 0.8cm;
+    cursor: pointer;
+    color: #595959;
+}
+
+.check-agree{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+}
+
+.agree{
+    color: white;
+}
+
+.card-2{
+    position: absolute;
+    background-color: #313131;
+    padding: 2cm 10px 0px;
+    width: 100%;
+}
+
+.laptop-card-2{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.laptop-logo{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fash{
+    color: white;
+    letter-spacing: 2px;
+}
+
+.tm{
+    color: white;
+}
+
+.about-cate-acc{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    color: white;
+}
+
+.detail-heading{
+    margin-bottom: 15px;
+}
+
+.detail-data{
+    margin-bottom: 15px;
+}
+
+.mob-card-2{
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.detail-arrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.about-cate-acc-2{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+}
+
+.detail-heading-2{
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+
+.detail-data-2{
+    margin-bottom: 15px;
+    padding-left: 15px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 911px) {
+    .Footer{
+        margin-top: 4cm;
+    }
+
+    .card-1{
+        gap: 10px;
+    }
+
+    .email-check-agree{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .about-cate-acc{
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .laptop-card-2{
+        display: none;
+    }
+
+    .mob-card-2{
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .Footer{
+        margin-top: 5cm;
+    }
+}
