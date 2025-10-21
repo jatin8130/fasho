@@ -20,7 +20,8 @@
     "react-dom": "^18",
     "react-material-ui-carousel": "^3.4.2",
     "react-redux": "^9.0.4",
-    "redux-toolkit": "^1.1.2"
+    "redux-toolkit": "^1.1.2",
+    "sweetalert2": "^11.25.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -2,55 +2,104 @@
 import React from 'react'
 import '../common/Nav.css'
 import { useState } from 'react';
-import { Select } from 'antd';
+import Select from "react-select"
 import Link from 'next/link'
 import Cart from '../pages/Cart.js'
 import { useSelector } from 'react-redux';
 
 const currency_lang = [
   {
-    value: 'English', label: <span>
-      <img className='flag' src='https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg' alt='...' />
-      <span>English</span>
-    </span>
+    value: 'English',
+    label: (
+      <span className="flex items-center gap-2">
+        <img
+          className="w-5 h-5 rounded-sm"
+          src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
+          alt="English flag"
+        />
+        <span>English</span>
+      </span>
+    ),
   },
   {
-    value: 'French', label: <span>
-      <img className='flag' src='https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg' alt='...' />
-      <span>French</span>
-    </span>
+    value: 'French',
+    label: (
+      <span className="flex items-center gap-2">
+        <img
+          className="w-5 h-5 rounded-sm"
+          src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg"
+          alt="French flag"
+        />
+        <span>French</span>
+      </span>
+    ),
   },
   {
-    value: 'German', label: <span>
-      <img className='flag' src='https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg' alt='...' />
-      <span>German</span>
-    </span>
+    value: 'German',
+    label: (
+      <span className="flex items-center gap-2">
+        <img
+          className="w-5 h-5 rounded-sm"
+          src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg"
+          alt="German flag"
+        />
+        <span>German</span>
+      </span>
+    ),
   },
   {
-    value: 'Spanish', label: <span>
-      <img className='flag' src='https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg' alt='...' />
-      <span>Spanish</span>
-    </span>
+    value: 'Spanish',
+    label: (
+      <span className="flex items-center gap-2">
+        <img
+          className="w-5 h-5 rounded-sm"
+          src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg"
+          alt="Spanish flag"
+        />
+        <span>Spanish</span>
+      </span>
+    ),
   },
   {
-    value: 'Italian', label: <span>
-      <img className='flag' src='https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg' alt='...' />
-      <span>Italian</span>
-    </span>
+    value: 'Italian',
+    label: (
+      <span className="flex items-center gap-2">
+        <img
+          className="w-5 h-5 rounded-sm"
+          src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg"
+          alt="Italian flag"
+        />
+        <span>Italian</span>
+      </span>
+    ),
   },
   {
-    value: 'Japanese', label: <span>
-      <img className='flag' src='https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg' alt='...' />
-      <span>Japanese</span>
-    </span>
+    value: 'Japanese',
+    label: (
+      <span className="flex items-center gap-2">
+        <img
+          className="w-5 h-5 rounded-sm"
+          src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg"
+          alt="Japanese flag"
+        />
+        <span>Japanese</span>
+      </span>
+    ),
   },
   {
-    value: 'Canada', label: <span>
-      <img className='flag' src='https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg' alt='...' />
-      <span>Canada</span>
-    </span>
+    value: 'Canada',
+    label: (
+      <span className="flex items-center gap-2">
+        <img
+          className="w-5 h-5 rounded-sm"
+          src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada_%28Pantone%29.svg"
+          alt="Canadian flag"
+        />
+        <span>Canada</span>
+      </span>
+    ),
   },
-]
+];
 
 const gifts = [
   {
@@ -140,17 +189,17 @@ const menus = [
     width: '790px',
     list: [
       {
-        img: 'https://themes12.anvanto.com/super/themes/birdwings/modules/an_megamenu/views/img/images/m1.jpg',
+        img: 'https://demo.xpeedstudio.com/marketov2/shoe/wp-content/uploads/sites/15/2018/10/feature2-min-1.jpg',
         subheading: 'gifts',
         submenu: gifts
       },
       {
-        img: 'https://themes12.anvanto.com/super/themes/birdwings/modules/an_megamenu/views/img/images/m2.jpg',
+        img: 'https://demo.xpeedstudio.com/marketov2/jewelry/wp-content/uploads/sites/17/2018/10/feature2-min.jpg',
         subheading: 'homeware',
         submenu: homeware
       },
       {
-        img: 'https://themes12.anvanto.com/super/themes/birdwings/img/cms/m3.jpg',
+        img: 'https://demo.xpeedstudio.com/marketov2/home7/wp-content/uploads/sites/7/2018/04/banner-campaign-3-1.png',
       }
     ],
   },
@@ -228,7 +277,7 @@ const menus = [
         submenu: Stationery
       },
       {
-        img: 'https://themes12.anvanto.com/super/themes/birdwings/94-menu_default/hummingbird-printed-t-shirt.jpg',
+        img: 'https://demo.xpeedstudio.com/marketov2/watch/wp-content/uploads/sites/14/2018/10/f2-min.jpg',
         submenu: [
           {
             label: 'Playtype notebook',
@@ -237,7 +286,7 @@ const menus = [
         ]
       },
       {
-        img: '	https://themes12.anvanto.com/super/themes/birdwings/78-menu_default/mountain-fox-cushion.jpg',
+        img: 'https://demo.xpeedstudio.com/marketov2/furniture/wp-content/uploads/sites/11/2018/10/feature1-min.jpg',
         submenu: [
           {
             label: 'Mini Bird Feeders - set of two',
@@ -333,7 +382,7 @@ const client = [
   },
   {
     label: 'WISHLIST',
-    link: '#',
+    link: '/Wishlist',
     list: []
   },
   {
@@ -350,7 +399,8 @@ const language = [
       { label: 'EUR' },
       { label: 'PLN' },
       { label: 'USD' }
-    ]
+    ],
+    href: '#'
   },
   {
     label: 'EN',
@@ -362,21 +412,24 @@ const language = [
       { label: 'IT' },
       { label: 'NL' },
       { label: 'DE' }
-    ]
+    ],
+    href: '#'
   },
   {
     label: 'Sign in',
     list: [],
-    href: '#'
+    href: '/Signin'
   }
 ]
 
 const Nav = () => {
 
   const data = useSelector((data) => data.Add.user.length)
+  const wishlistData = useSelector((data) => data.wishlist.items.length)
 
   const [active, setactive] = useState(null);
   const [show, setshow] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(currency_lang[0]);
 
   const handelevententer = (e) => {
     setactive(e);
@@ -394,12 +447,11 @@ const Nav = () => {
     const menu = document.getElementById('mobile-menu');
     const checktoggle = StyleProp(menu, "left");
 
-    if (checktoggle == '-10000px') {
+    if (checktoggle == '-500px') {
       menu.style.left = '0px';
     } else {
-      menu.style.left = '-10000px';
+      menu.style.left = '-500px';
     }
-    console.log(checktoggle);
   }
 
   const handleshow = () => setshow(false)
@@ -417,17 +469,32 @@ const Nav = () => {
             <span className='line'></span>
             <p className='dal'>Client service</p>
             <span className='line'></span>
-            <div className='lang'>
+            <div className='lang' style={{zIndex: 999}}>
               <Select
-                defaultValue='English'
-                style={{ width: 110 }}
                 options={currency_lang}
+                value={selectedOption}
+                onChange={setSelectedOption}
+                isSearchable={false}
+                className="text-base"
+                styles={{
+                  control: (base) => ({
+                    ...base,
+                    borderRadius: "0.5rem",
+                    padding: "1px 4px",
+                  }),
+                  option: (base, { isFocused }) => ({
+                    ...base,
+                    backgroundColor: isFocused ? "#f3f4f6" : "white",
+                    color: "#111",
+                    cursor: "pointer",
+                  }),
+                }}
               />
             </div>
             <span className='line'></span>
             <div className='cash'>
               <Select
-                defaultValue='USD'
+                defaultValue={{ value: 'USD', label: 'USD' }}
                 options={[
                   { value: 'USD', label: 'USD' },
                   { value: 'EUR', label: 'EUR' },
@@ -444,34 +511,34 @@ const Nav = () => {
 
             <div className='search-panel'>
               <input className='search-text' type='text' placeholder='Search' />
-              <span class="material-symbols-outlined search-icon">
+              <span className="material-symbols-outlined search-icon">
                 search
               </span>
             </div>
 
-            <div onClick={() => setshow(true)} className='cart-wish-sign'>
-              <div className='cart'>
-                <span class="material-symbols-outlined icon">
+            <div className='cart-wish-sign'>
+              <div onClick={() => setshow(true)} className='cart'>
+                <span className="material-symbols-outlined icon">
                   add_shopping_cart
                 </span>
                 <span className='cart-no'>{data}</span>
                 <p>Cart</p>
               </div>
 
-              <div className='wishlist'>
+              <Link href='/Wishlist' className='wishlist'>
                 <span class="material-symbols-outlined icon">
                   favorite
                 </span>
-                <span className='wish-no'>0</span>
+                <span className='wish-no'>{wishlistData}</span>
                 <p>Wishlist</p>
-              </div>
+              </Link>
 
-              <div className='sign'>
-                <span class="material-symbols-outlined icon">
+              <Link href='/Signin' className='sign'>
+                <span className="material-symbols-outlined icon">
                   person
                 </span>
                 <p className='name'>Sign in</p>
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -630,7 +697,7 @@ const Nav = () => {
                       className='mob-nav-li'
                     >
                       <div className='mob-group'>
-                        <Link href='#' className='mob-nav-li-client'>{item.label}</Link>
+                        <Link onClick={item.label == 'WISHLIST' ? () => toggle() : undefined}  href={item.link} className='mob-nav-li-client'>{item.label}</Link>
 
                         {item.list.length ? <span class="material-symbols-outlined" style={{ cursor: 'default' }} onClick={() => { handelevententer(item.label) }}>
                           chevron_right
@@ -690,7 +757,7 @@ const Nav = () => {
                   return (
                     <li key={ind} className='mob-lang-li'>
                       <div className='mob-lang-arrow'>
-                        <Link style={{ fontWeight: 500 }} className='mob-nav-li-client' href='#'>{item.label}</Link>
+                        <Link onClick={item.label == 'Sign in' ? () => toggle() : undefined} style={{ fontWeight: 500 }} className='mob-nav-li-client' href={item.href}>{item.label}</Link>
 
                         {item.list.length ? <span class="material-symbols-outlined" style={{ cursor: 'default' }} onClick={() => { handelevententer(item.label) }}>
                           chevron_right
@@ -731,7 +798,7 @@ const Nav = () => {
           </div>
 
           <div className='mob-search-panel'>
-            <input className='mob-search-text' type='text' placeholder='Search' />
+            <input className='mob-search-text' type='text' placeholder='Search products...' />
             <span class="material-symbols-outlined search-icon">
               search
             </span>

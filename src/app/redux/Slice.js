@@ -1,34 +1,35 @@
+'use client'
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-    user: JSON.parse(localStorage.getItem('product')) ? JSON.parse(localStorage.getItem('product')) : []
+    user: []
 }
 
 const Adduser = createSlice({
     name: 'adduser',
     initialState,
-    reducers:{
-        adduser:(state, action)=> {
+    reducers: {
+        adduser: (state, action) => {
             const data = {
-                id: nanoid(),
+                nanoid: nanoid(),
                 order: action.payload
             }
             state.user.push(data);
-            localStorage.setItem('product', JSON.stringify(state.user));
         },
 
-        remove:(state, action)=> {
-            const data = state.user.filter((val)=> {
-                return val.id !== action.payload
+        remove: (state, action) => {
+            const data = state.user.filter((val) => {
+                return val.nanoid !== action.payload
             })
 
-            localStorage.removeItem(action.payload);
-            localStorage.setItem('product', JSON.stringify(data));
-
             state.user = data;
-        }
+        },
+
+        clear: (state) => {
+            state.user = [];
+        },
     }
 })
 
-export const { adduser, remove } = Adduser.actions;
+export const { adduser, remove, clear } = Adduser.actions;
 export default Adduser.reducer;

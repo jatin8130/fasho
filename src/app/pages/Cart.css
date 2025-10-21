@@ -67,12 +67,14 @@
     height: fit-content;
     border-radius: 50%;
     cursor: pointer;
+    font-size: larger;
 }
 
 .cart-product-name{
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 0.5px;
-    font-weight: 800;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .cart-product-dimension, .cart-product-color{
@@ -110,13 +112,17 @@
 
 /* cart proceed css */
 
+.no-item{
+    margin: 25px;
+    font-weight: 500;
+}
+
 .cart-proceed{
     display: flex;
     flex-direction: column;
     background-color: #F6F6F6;
     padding: 30px 30px 50px;
     gap: 10px;
-    margin-top: 60px;
     margin-bottom: 100px;
 }
 
@@ -161,6 +167,11 @@
     font-size: 15px;
     border: 2px solid #d6d6d6;
     background-color: transparent;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cart-shopping-btn:hover{

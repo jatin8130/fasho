@@ -1,1 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: rgba(171, 168, 168, 0.545);
+}
+
+::-webkit-scrollbar-track{
+    background-color: rgba(26, 26, 26, 0.774);
+}

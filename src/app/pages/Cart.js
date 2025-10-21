@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import './Cart.css'
 import { remove } from '../redux/Slice';
 import { useDispatch, useSelector } from 'react-redux';
+import Link from 'next/link';
 
 const Cart = ({ handleshow }) => {
 
     const dispatch = useDispatch();
     const data = useSelector((data) => data.Add.user);
+    data.length && localStorage.setItem('order', JSON.stringify(data));
 
     const sum = data.reduce((acc, data) => acc + parseFloat(data.order.price), 0);
     const total = sum ? sum + 5.91 : 0
@@ -46,7 +48,7 @@ const Cart = ({ handleshow }) => {
                                                 <p className='cart-product-price'>€{item.order.price} <span style={{ color: '#989898', fontSize: '13px' }}>× 1</span></p>
                                             </div>
 
-                                            <span onClick={() => dispatch(remove(item.id))} class="material-symbols-outlined cart-product-close">
+                                            <span onClick={() => dispatch(remove(item.nanoid))} class="material-symbols-outlined cart-product-close">
                                                 close
                                             </span>
                                         </div>
@@ -58,30 +60,34 @@ const Cart = ({ handleshow }) => {
                         }
 
                         {/* product list in cart are proceed to checkout */}
-                        <div className='cart-proceed'>
-                            <div className='subtotal-price'>
-                                <p className='subtotal'>Subtotal</p>
-                                <p className='price'>€{sum}</p>
-                            </div>
+                            {
+                                data.length ?
+                                <div className='cart-proceed'>
+                                <div className='subtotal-price'>
+                                    <p className='subtotal'>Subtotal</p>
+                                    <p className='price'>€{sum}</p>
+                                </div>
 
-                            <div className='shipping-price'>
-                                <p className='shipping'>Shipping</p>
-                                <p className='prices'>€{sum ? 5.91 : 0}</p>
-                            </div>
+                                <div className='shipping-price'>
+                                    <p className='shipping'>Shipping</p>
+                                    <p className='prices'>€{sum ? 5.91 : 0}</p>
+                                </div>
 
-                            <div className='shipping-price' style={{ marginBottom: '20px' }}>
-                                <p className='shipping'>Included taxes</p>
-                                <p className='prices'>€0.00</p>
-                            </div>
+                                <div className='shipping-price' style={{ marginBottom: '20px' }}>
+                                    <p className='shipping'>Included taxes</p>
+                                    <p className='prices'>€0.00</p>
+                                </div>
 
-                            <div className='subtotal-price'>
-                                <p className='subtotal'>Total(tax incl.)</p>
-                                <p className='price'>€{total}</p>
-                            </div>
+                                <div className='subtotal-price'>
+                                    <p className='subtotal'>Total(tax incl.)</p>
+                                    <p className='price'>€{total}</p>
+                                </div>
 
-                            <button className='cart-shopping-btn'>PROCEED TO CHECKOUT</button>
-                            <button className='cart-shopping-btn'>CONTINUE SHOPPING</button>
-                        </div>
+                                <Link onClick={handleshow} href='/Cart' className='cart-shopping-btn'>PROCEED TO CHECKOUT</Link>
+                                <Link onClick={handleshow} href='/' className='cart-shopping-btn'>CONTINUE SHOPPING</Link>
+                            </div>
+                             : <p className='no-item'>There are no more items in your cart</p>
+                            }
 
                     </div>
 

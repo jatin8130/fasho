@@ -32,8 +32,8 @@
 }
 
 .flag{
-    height: auto;
-    width: 20px;
+    height: 10px;
+    width: 20px !important;
     margin-right: 8px;
 }
 
@@ -86,6 +86,11 @@
     border-radius: 0px 8px 8px 0px;
     color: white;
     font-size: xx-large;
+    cursor: pointer;
+}
+
+.search-icon:hover{
+    background-color: #FF6701;
 }
 
 .cart-wish-sign{
@@ -119,6 +124,7 @@
     padding: 0.6px 3px;
     z-index: 99;
     font-size: 15px;
+    color: white;
 }
 
 .name{
@@ -148,8 +154,9 @@
     text-decoration: none;
     color: white;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .nav-link:hover{
@@ -168,7 +175,7 @@
 }
 
 .nav-card-heading{
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 15px;
     text-transform: capitalize;
     cursor: pointer;
@@ -181,7 +188,7 @@
 .nav-card-item{
     display: flex;
     flex-direction: column;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .nav-card-link{
@@ -230,7 +237,8 @@
     top: 0%;
     width: 280px;
     height: 100vh;
-    left: -10000px;
+    left: -500px;
+    transition: 0.3s ease-in-out ;
 }
 
 .mob-group{
@@ -247,8 +255,9 @@
     list-style: none;
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: 600;
-    font-size: 13px;
+    font-weight: 700;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .mob-card-container{
@@ -290,8 +299,9 @@
     list-style: none;
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: 600;
-    font-size: 13px;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .mob-nav-img-label{

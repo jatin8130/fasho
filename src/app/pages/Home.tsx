@@ -3,42 +3,46 @@ import React, { useState } from 'react'
 import './Home.css'
 import { Carousel } from 'antd'
 import Link from 'next/link'
-import { all, women, men, child, mas, valentine} from '../Rest-api'
+import { all, women, men, child, mas, valentine } from '../Rest-api'
 import { adduser } from '../redux/Slice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import Swal from 'sweetalert2'
+import { useRouter } from 'next/navigation';
+import Wishlisticon from "../pages/wishlisticon"
 
 const banner = [
   {
-    img: 'https://themes12.anvanto.com/super/themes/birdwings/modules/an_homeslider/img/a943a7a903d8106fdf0fc03b443cf064_1.jpg',
-    label: 'Hanging',
-    label2: 'Chairs',
-    para: 'lorem ipsum dolor sit amet consectetur',
-    btn: 'SHOP NOW',
+    img: 'https://klbtheme.com/clotya/wp-content/uploads/2022/05/slider-06.jpg',
+    label: "Valentine Paul -",
+    label2: 'Essential Collection',
+    para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eius magnam earum placeat culpa modi ex tempora sint vitae soluta.',
+    btn: 'Shop collection',
     link: '#'
   },
   {
-    img: 'https://themes12.anvanto.com/super/themes/birdwings/modules/an_homeslider/img/9bfbcf844c962980e1476d22e5c7a1b1_1.jpg',
-    label: 'Hanging',
-    label2: 'Chairs',
-    para: 'lorem ipsum dolor sit amet consectetur',
-    btn: 'SHOP NOW',
+    img: 'https://klbtheme.com/clotya/wp-content/uploads/2022/05/slider-05.jpg',
+    label: "Making someone feel",
+    label2: 'pretty is an art',
+    para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eius magnam earum placeat culpa modi ex tempora sint vitae soluta.',
+    btn: 'Shop collection',
     link: '#'
   },
   {
-    img: 'https://themes12.anvanto.com/super/themes/birdwings/modules/an_homeslider/img/7779d97876d0544fa6821156f45197a9_1.jpg',
-    label: 'Hanging',
-    label2: 'Chairs',
-    para: 'lorem ipsum dolor sit amet consectetur',
-    btn: 'SHOP NOW',
+    img: 'https://klbtheme.com/clotya/wp-content/uploads/2022/05/slider-04.jpg',
+    label: "Valentine Paul -",
+    label2: 'Essential Collection',
+    para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eius magnam earum placeat culpa modi ex tempora sint vitae soluta.',
+    btn: 'Shop Collection',
     link: '#'
-  }
+  },
 ]
 
-const recommended = [
+export const recommended = [
   {
-    label: 'Playtype notebook',
-    img: 'https://themes12.anvanto.com/super/themes/birdwings/94-home_default/hummingbird-printed-t-shirt.jpg',
-    price: '15.54',
+    id: 37,
+    label: 'Heavy Duty Antis',
+    img: 'https://demo.xpeedstudio.com/marketov2/furniture/wp-content/uploads/sites/11/2018/10/1-min-1-253x200-1.png',
+    price: '4000',
     listsize: [
       { size: '40x60cm' },
       { size: '60x90cm' }
@@ -47,9 +51,10 @@ const recommended = [
     stock: true
   },
   {
-    label: 'Bethan Laura Wood for...',
-    img: 'https://themes12.anvanto.com/super/themes/birdwings/90-home_default/brown-bear-printed-sweater.jpg',
-    price: '23.65',
+    id: 38,
+    label: 'Heavy Duty Anti',
+    img: 'https://demo.xpeedstudio.com/marketov2/furniture/wp-content/uploads/sites/11/2018/05/Untitled-3-1.jpg',
+    price: '2000',
     listsize: [
       { size: '60x90cm' },
       { size: '80x120cm' }
@@ -58,9 +63,10 @@ const recommended = [
     stock: true
   },
   {
-    label: 'Art blocks - Play',
-    img: 'https://themes12.anvanto.com/super/themes/birdwings/88-home_default/the-best-is-yet-to-come-framed-poster.jpg',
-    price: '24.50',
+    id: 39,
+    label: 'Zinglo Wheel',
+    img: 'https://demo.xpeedstudio.com/marketov2/furniture/wp-content/uploads/sites/11/2018/10/red_color_chair-1-300x300.png',
+    price: '3000',
     listsize: [
       { size: '40x60cm' },
       { size: '60x90cm' }
@@ -69,9 +75,10 @@ const recommended = [
     stock: true
   },
   {
-    label: 'Alphabat blocks',
-    img: 'https://themes12.anvanto.com/super/themes/birdwings/87-home_default/the-adventure-begins-framed-poster.jpg',
-    price: '24.50',
+    id: 40,
+    label: 'Zinglo Wheels',
+    img: 'https://demo.xpeedstudio.com/marketov2/furniture/wp-content/uploads/sites/11/2018/10/4-min-300x300.png',
+    price: '5000',
     listsize: [
       { size: '40x60cm' },
       { size: '60x90cm' }
@@ -80,9 +87,10 @@ const recommended = [
     stock: true
   },
   {
-    label: 'Sky planter',
-    img: 'https://themes12.anvanto.com/super/themes/birdwings/86-home_default/today-is-a-good-day-framed-poster.jpg',
-    price: '24.50',
+    id: 41,
+    label: 'Xpeed Projector',
+    img: 'https://demo.xpeedstudio.com/marketov2/furniture/wp-content/uploads/sites/11/2018/10/3-min.png',
+    price: '599',
     listsize: [
       { size: '60x90cm' },
       { size: '80x120cm' }
@@ -91,9 +99,10 @@ const recommended = [
     stock: true
   },
   {
-    label: 'Alessi 9093 hob kettle',
-    img: 'https://themes12.anvanto.com/super/themes/birdwings/84-home_default/mug-the-best-is-yet-to-come.jpg',
-    price: '92.92',
+    id: 42,
+    label: 'Zux Motered',
+    img: 'https://demo.xpeedstudio.com/marketov2/furniture/wp-content/uploads/sites/11/2018/10/2-min-300x300.png',
+    price: '7000',
     listsize: [
       { size: '60x90cm' },
       { size: '80x120cm' }
@@ -106,19 +115,23 @@ const recommended = [
 const Home = () => {
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [active, setactive] = useState('all');
-  const [Show, setShow] = useState(null);
-  const [procate, setprocate] = useState(all)
+  const [Show, setShow] = useState('');
+  const [procate, setprocate] = useState(all);
 
-  const mystyle = {
-    pointerEvent: 'none',
-    cursor: 'not-allowed'
+  const popup = (item: String) => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Product added to cart successfully. Pls checkout cart!',
+      text: item,
+      timer: 3000
+    })
   }
 
-  const order = ({img, name, color, price}) => {
-    dispatch(adduser({img, name, color, price}))
-    alert('your product order succesfully.')
+  const productShow = (item: any) => {
+    router.push(`/Product/${item.id}`);
   }
 
   return (
@@ -149,21 +162,21 @@ const Home = () => {
           </Carousel>
         </div>
 
-        <section style={{ marginTop: '1.5cm' }}>
+        <section style={{ marginTop: '0.5cm' }}>
           <div className='our-product'>
             <p className='product'>Our Products</p>
             <div className='product-item'>
-              <p className={`product-name ${active == 'all' ? 'active' : null}`} onClick={() => {setactive('all'), setprocate(all)}}>All</p>
+              <p className={`product-name ${active == 'all' ? 'active' : null}`} onClick={() => { setactive('all'), setprocate(all) }}>All</p>
               <hr className='lines' />
-              <p className={`product-name ${active == 'women' ? 'active' : null}`} onClick={() => {setactive('women'), setprocate(women)}}>For women</p>
+              <p className={`product-name ${active == 'women' ? 'active' : null}`} onClick={() => { setactive('women'), setprocate(women) }}>For women</p>
               <hr className='lines' />
-              <p className={`product-name ${active == 'men' ? 'active' : null}`} onClick={() => {setactive('men'), setprocate(men)}}>For men</p>
+              <p className={`product-name ${active == 'men' ? 'active' : null}`} onClick={() => { setactive('men'), setprocate(men) }}>For men</p>
               <hr className='lines' />
-              <p className={`product-name ${active == 'child' ? 'active' : null}`} onClick={() => {setactive('child'), setprocate(child)}}>For children</p>
+              <p className={`product-name ${active == 'child' ? 'active' : null}`} onClick={() => { setactive('child'), setprocate(child) }}>For children</p>
               <hr className='lines' />
-              <p className={`product-name ${active == 'mas' ? 'active' : null}`} onClick={() => {setactive('mas'), setprocate(mas)}}>X-Mas</p>
+              <p className={`product-name ${active == 'mas' ? 'active' : null}`} onClick={() => { setactive('mas'), setprocate(mas) }}>X-Mas</p>
               <hr className='lines' />
-              <p className={`product-name ${active == 'valentine' ? 'active' : null}`} onClick={() => {setactive('valentine'), setprocate(valentine)}}>Valentine's day</p>
+              <p className={`product-name ${active == 'valentine' ? 'active' : null}`} onClick={() => { setactive('valentine'), setprocate(valentine) }}>Valentine's day</p>
             </div>
           </div>
 
@@ -171,8 +184,9 @@ const Home = () => {
             {
               procate.map((item, ind) => {
                 return (
-                  <div key={ind} className='product-list' onMouseEnter={() => { setShow(item.label) }} onMouseLeave={() => { setShow(null) }}>
-                    <img className='product-img' src={item.img} alt='img...' />
+                  <div key={ind} className='product-list relative' onMouseEnter={() => { setShow(item.label) }} onMouseLeave={() => { setShow('') }}>
+                    <Wishlisticon items={item}/>
+                    <img className='product-img cursor-pointer' onClick={() => productShow(item)} src={item.img} alt='img...' />
                     <h3 className='product-names'>{item.label}</h3>
                     <span className='product-price'>€{item.price}</span>
                     {
@@ -199,7 +213,11 @@ const Home = () => {
                         <input className='product-color' type='color' value={item.color} />
                       </div>
                     }
-                    <input onClick={() => order({img: item.img, name: item.label, color: item.color, price: item.price})} className='stock' type='button' value={item.stock ? 'ADD TO CART' : 'OUT OF STOCK'} style={item.stock ? null : mystyle} />
+                    <input onClick={() => {
+                      dispatch(adduser({ img: item.img, name: item.label, color: item.color, price: item.price }))
+                      popup(item.label)
+                    }
+                    } className='stock' type='button' value='ADD TO CART' />
                   </div>
                 )
               })
@@ -211,22 +229,20 @@ const Home = () => {
           <div className='colloction'>
             <div className='colloction-one'>
               <div className='colloction-img'>
-                <img className='colloction-imgs' src='https://themes12.anvanto.com/super/themes/birdwings/modules/an_homeproducts/img/217a0c3c474d30fb5ab010575f29c119_1.jpg' alt='...' />
-              </div>
-              <div className='colloction-detail'>
-                <p style={{ color: '#000', fontSize: '14px' }}>New Colloction</p>
-                <p className='colorful'>Colorful poufs for your comfort!</p>
-                <span className='discover'>DISCOVER</span>
+                <img className='colloction-imgs' src='https://demo.xpeedstudio.com/marketov2/furniture/wp-content/uploads/sites/11/2018/10/feature1-min.jpg' alt='...' />
+                <div className='collection-detail'>
+                  <p className='new-collection'>New Collection</p>
+                  <h5 className='colorful'>Colorful poufs for your Comfort!</h5>
+                  <button className='discover'>Discover</button>
+                </div>
               </div>
             </div>
 
             <div className='colloction-two'>
-              <div>
-                <img className='colloction-imgs' src='https://themes12.anvanto.com/super/themes/birdwings/modules/an_homeproducts/img/bfdaf9b8ce2683c1ac5550fd6fb8765d_1.jpg' alt='...' />
-              </div>
-              <div className='colloction-details'>
-                <p>HUGE SELECTION OF POTS</p>
-                <p>DISCOUNT <span style={{color: 'orange'}}>$5.00</span></p>
+              <img className='colloction-imgs' src='https://demo.xpeedstudio.com/marketov2/watch/wp-content/uploads/sites/14/2018/10/f2-min.jpg' alt='...' />
+              <div style={{ marginTop: '10px' }}>
+                <h5 style={{ fontSize: '17px', marginBottom: '15px' }}>HUGE SELECTION OF POTS DISCOUNT <span style={{ color: 'orange' }}>$5.00</span></h5>
+                <button className='discover'>Discover</button>
               </div>
             </div>
           </div>
@@ -239,10 +255,11 @@ const Home = () => {
             {
               recommended.map((item, ind) => {
                 return (
-                  <div key={ind} className='product-list' onMouseEnter={() => { setShow(item.label) }} onMouseLeave={() => { setShow(null) }}>
-                    <img className='product-img' src={item.img} alt='img...' />
+                  <div key={ind} className='product-list relative' onMouseEnter={() => { setShow(item.label) }} onMouseLeave={() => { setShow('') }}>
+                    <Wishlisticon items={item}/>
+                    <img className='product-img cursor-pointer' onClick={() => productShow(item)} src={item.img} alt='img...' />
                     <h3 className='product-names'>{item.label}</h3>
-                    <span className='product-price'>€{item.price}</span>
+                    <span className='product-price'>₹{item.price}</span>
                     {
                       item.label == Show && <div className='laptop-size-color'>
                         <select className='product-size'>
@@ -267,23 +284,42 @@ const Home = () => {
                         <input className='product-color' type='color' value={item.color} />
                       </div>
                     }
-                    <input onClick={() => order({img: item.img, name: item.label, color: item.color, price: item.price})} className='stock' type='button' value={item.stock ? 'ADD TO CART' : 'OUT OF STOCK'} style={item.stock ? null : mystyle} />
+                    <input onClick={() => {
+                      dispatch(adduser({ img: item.img, name: item.label, color: item.color, price: item.price }))
+                      popup(item.label)
+                    }} className='stock' type='button' value='ADD TO CART' />
                   </div>
                 )
               })
             }
           </div>
 
+          {/* new collection */}
+
+          <div className='colloction'>
+            <div className='colloction-one'>
+              <div className='colloction-img'>
+                <img className='colloction-imgs' src='https://demo.xpeedstudio.com/marketov2/shoe/wp-content/uploads/sites/15/2018/10/feature2-min-1.jpg' alt='...' />
+              </div>
+            </div>
+
+            <div className='colloction-two'>
+              <img className='colloction-imgs' src='https://demo.xpeedstudio.com/marketov2/home7/wp-content/uploads/sites/7/2018/04/banner-campaign-3-1.png' alt='...' />
+            </div>
+
+            <div className='colloction-two'>
+              <img className='colloction-imgs' src='https://demo.xpeedstudio.com/marketov2/jewelry/wp-content/uploads/sites/17/2018/10/feature2-min.jpg' alt='...' />
+            </div>
+          </div>
+
           {/* brand name */}
 
           <div className='brand'>
-            <img className='brand-img' src='https://themes12.anvanto.com/super/themes/birdwings/img/m/7-brand_small.jpg' alt='...' />
-            <img className='brand-img' src='https://themes12.anvanto.com/super/themes/birdwings/img/m/6-brand_small.jpg' alt='...' />
-            <img className='brand-img' src="https://themes12.anvanto.com/super/themes/birdwings/img/m/5-brand_small.jpg" alt="..." />
-            <img className='brand-img' src="https://themes12.anvanto.com/super/themes/birdwings/img/m/4-brand_small.jpg" alt="..." />
-            <img className='brand-img' src="https://themes12.anvanto.com/super/themes/birdwings/img/m/3-brand_small.jpg" alt="..." />
-            <img className='brand-img' src="https://themes12.anvanto.com/super/themes/birdwings/img/m/2-brand_small.jpg" alt="...." />
-            <img className='brand-img' src="https://themes12.anvanto.com/super/themes/birdwings/img/m/1-brand_small.jpg" alt="..." />
+            <img className='brand-img' src='https://demo.xpeedstudio.com/marketov2/home2/wp-content/uploads/sites/2/2018/07/sponsors_1.png' alt='...' />
+            <img className='brand-img' src='https://demo.xpeedstudio.com/marketov2/home2/wp-content/uploads/sites/2/2018/07/sponsors_2.png' alt='...' />
+            <img className='brand-img' src='https://demo.xpeedstudio.com/marketov2/home2/wp-content/uploads/sites/2/2018/07/sponsors_3.png' alt='...' />
+            <img className='brand-img' src='https://demo.xpeedstudio.com/marketov2/home2/wp-content/uploads/sites/2/2018/07/sponsors_4.png' alt='...' />
+            <img className='brand-img' src='https://demo.xpeedstudio.com/marketov2/home2/wp-content/uploads/sites/2/2018/07/sponsors_5.png' alt='...' />
           </div>
         </section>
       </div>
