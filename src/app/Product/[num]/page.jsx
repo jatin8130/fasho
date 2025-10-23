@@ -12,7 +12,7 @@ const ProductPage = () => {
   const { num } = useParams();
   const dispatch = useDispatch();
 
-  const popup = (item: String) => {
+  const popup = (item) => {
     Swal.fire({
       icon: 'success',
       title: 'Product added to cart successfully. Pls checkout cart!',

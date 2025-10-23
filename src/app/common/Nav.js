@@ -2,7 +2,6 @@
 import React from 'react'
 import '../common/Nav.css'
 import { useState } from 'react';
-import Select from "react-select"
 import Link from 'next/link'
 import Cart from '../pages/Cart.js'
 import { useSelector } from 'react-redux';
@@ -429,7 +428,6 @@ const Nav = () => {
 
   const [active, setactive] = useState(null);
   const [show, setshow] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(currency_lang[0]);
 
   const handelevententer = (e) => {
     setactive(e);
@@ -469,38 +467,26 @@ const Nav = () => {
             <span className='line'></span>
             <p className='dal'>Client service</p>
             <span className='line'></span>
-            <div className='lang' style={{zIndex: 999}}>
-              <Select
-                options={currency_lang}
-                value={selectedOption}
-                onChange={setSelectedOption}
-                isSearchable={false}
-                className="text-base"
-                styles={{
-                  control: (base) => ({
-                    ...base,
-                    borderRadius: "0.5rem",
-                    padding: "1px 4px",
-                  }),
-                  option: (base, { isFocused }) => ({
-                    ...base,
-                    backgroundColor: isFocused ? "#f3f4f6" : "white",
-                    color: "#111",
-                    cursor: "pointer",
-                  }),
-                }}
-              />
+            <div className='lang' style={{ zIndex: 999 }}>
+              <select className="border rounded-lg px-3 py-2 bg-white text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                {
+                  currency_lang.map((item, val) => {
+                    return (
+                      <option key={val} value={item.label}>{item.label}</option>
+                    )
+                  })
+                }
+              </select>
             </div>
             <span className='line'></span>
             <div className='cash'>
-              <Select
-                defaultValue={{ value: 'USD', label: 'USD' }}
-                options={[
-                  { value: 'USD', label: 'USD' },
-                  { value: 'EUR', label: 'EUR' },
-                  { value: 'PLN', label: 'PLN' }
-                ]}
-              />
+              <select
+                className="border rounded-lg bg-white px-3 py-2 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="USD" selected>USD</option>
+                <option value="EUR">EUR</option>
+                <option value="PLN">PLN</option>
+              </select>
             </div>
           </div>
         </nav>
@@ -526,7 +512,7 @@ const Nav = () => {
               </div>
 
               <Link href='/Wishlist' className='wishlist'>
-                <span class="material-symbols-outlined icon">
+                <span className="material-symbols-outlined icon">
                   favorite
                 </span>
                 <span className='wish-no'>{wishlistData}</span>
@@ -620,7 +606,7 @@ const Nav = () => {
               <div className='logo'>Fasho<span style={{ color: 'black' }}>.COM</span></div>
 
               <div onClick={() => setshow(true)} className='cart'>
-                <span class="material-symbols-outlined icon">
+                <span className="material-symbols-outlined icon">
                   add_shopping_cart
                 </span>
                 <span className='cart-no'>{data}</span>
@@ -643,7 +629,7 @@ const Nav = () => {
                       <div className='mob-group'>
                         <Link href='#' className='mob-nav-li'>{item.label}</Link>
 
-                        {item.list.length ? <span class="material-symbols-outlined" style={{ cursor: 'default' }} onClick={() => { handelevententer(item.label) }}>
+                        {item.list.length ? <span className="material-symbols-outlined" style={{ cursor: 'default' }} onClick={() => { handelevententer(item.label) }}>
                           chevron_right
                         </span> : null}
                       </div>
@@ -660,7 +646,7 @@ const Nav = () => {
                             height: '100vh'
                           }}
                         >
-                          <span class="material-symbols-outlined" style={{ cursor: 'default' }} onClick={handeleventleave}>
+                          <span className="material-symbols-outlined" style={{ cursor: 'default' }} onClick={handeleventleave}>
                             arrow_back
                           </span>
                           {
@@ -697,9 +683,9 @@ const Nav = () => {
                       className='mob-nav-li'
                     >
                       <div className='mob-group'>
-                        <Link onClick={item.label == 'WISHLIST' ? () => toggle() : undefined}  href={item.link} className='mob-nav-li-client'>{item.label}</Link>
+                        <Link onClick={item.label == 'WISHLIST' ? () => toggle() : undefined} href={item.link} className='mob-nav-li-client'>{item.label}</Link>
 
-                        {item.list.length ? <span class="material-symbols-outlined" style={{ cursor: 'default' }} onClick={() => { handelevententer(item.label) }}>
+                        {item.list.length ? <span className="material-symbols-outlined" style={{ cursor: 'default' }} onClick={() => { handelevententer(item.label) }}>
                           chevron_right
                         </span> : null}
                       </div>
@@ -716,7 +702,7 @@ const Nav = () => {
                             height: '100vh'
                           }}
                         >
-                          <span class="material-symbols-outlined" style={{ cursor: 'default' }} onClick={handeleventleave}>
+                          <span className="material-symbols-outlined" style={{ cursor: 'default' }} onClick={handeleventleave}>
                             arrow_back
                           </span>
                           {
@@ -724,7 +710,7 @@ const Nav = () => {
                               return (
                                 <div className='mob-nav-card-client' key={index}>
                                   <div className='mob-nav-img-label'>
-                                    {<span class="material-symbols-outlined" style={{ cursor: 'default', fontWeight: 400 }} onClick={handeleventleave}>
+                                    {<span className="material-symbols-outlined" style={{ cursor: 'default', fontWeight: 400 }} onClick={handeleventleave}>
                                       {items.img}
                                     </span>}
                                     {<p className='mob-nav-detail-heading'>{items.label}</p>}
@@ -759,7 +745,7 @@ const Nav = () => {
                       <div className='mob-lang-arrow'>
                         <Link onClick={item.label == 'Sign in' ? () => toggle() : undefined} style={{ fontWeight: 500 }} className='mob-nav-li-client' href={item.href}>{item.label}</Link>
 
-                        {item.list.length ? <span class="material-symbols-outlined" style={{ cursor: 'default' }} onClick={() => { handelevententer(item.label) }}>
+                        {item.list.length ? <span className="material-symbols-outlined" style={{ cursor: 'default' }} onClick={() => { handelevententer(item.label) }}>
                           chevron_right
                         </span> : null}
                       </div>
@@ -776,7 +762,7 @@ const Nav = () => {
                             height: '100vh'
                           }}
                         >
-                          <span class="material-symbols-outlined" style={{ cursor: 'default' }} onClick={handeleventleave}>
+                          <span className="material-symbols-outlined" style={{ cursor: 'default' }} onClick={handeleventleave}>
                             arrow_back
                           </span>
                           {
@@ -799,7 +785,7 @@ const Nav = () => {
 
           <div className='mob-search-panel'>
             <input className='mob-search-text' type='text' placeholder='Search products...' />
-            <span class="material-symbols-outlined search-icon">
+            <span className="material-symbols-outlined search-icon">
               search
             </span>
           </div>

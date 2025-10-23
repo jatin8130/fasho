@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/layout.js", "src/app/redux/provider.js", "src/app/api/Singup.jsx", "src/app/client/Navclient.jsx", "src/app/common/Nav.js", "src/app/pages/Home.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/layout.js", "src/app/redux/provider.js", "src/app/api/Singup.jsx", "src/app/client/Navclient.jsx", "src/app/common/Nav.js", "src/app/pages/Home.js", "src/app/Product/[num]/page.jsx", "src/app/Cart/page.jsx"],
   "exclude": ["node_modules"]
 }

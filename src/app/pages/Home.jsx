@@ -8,7 +8,7 @@ import { adduser } from '../redux/Slice'
 import { useDispatch, useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation';
-import Wishlisticon from "../pages/wishlisticon"
+import Wishlisticon from "./wishlisticon"
 
 const banner = [
   {
@@ -121,7 +121,7 @@ const Home = () => {
   const [Show, setShow] = useState('');
   const [procate, setprocate] = useState(all);
 
-  const popup = (item: String) => {
+  const popup = (item) => {
     Swal.fire({
       icon: 'success',
       title: 'Product added to cart successfully. Pls checkout cart!',
@@ -130,7 +130,7 @@ const Home = () => {
     })
   }
 
-  const productShow = (item: any) => {
+  const productShow = (item) => {
     router.push(`/Product/${item.id}`);
   }
 
