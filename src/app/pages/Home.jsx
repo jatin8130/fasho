@@ -149,11 +149,11 @@ const Home = () => {
               banner.map((item, ind) => {
                 return (
                   <div key={ind}>
-                    <div className='carousel-data'>
+                    {/* <div className='carousel-data'>
                       <h1 className='carousel-heading'>{item.label}<br />{item.label2}</h1>
                       <p className='carousel-para'>{item.para}</p>
                       <Link className='carousel-btn' href={item.link}>{item.btn}</Link>
-                    </div>
+                    </div> */}
                     <img src={item.img} className='carousel-img' alt='B1' />
                   </div>
                 )
