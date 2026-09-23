@@ -12,7 +12,7 @@ import Wishlisticon from "./wishlisticon"
 
 const banner = [
   {
-    img: 'https://klbtheme.com/clotya/wp-content/uploads/2022/05/slider-06.jpg',
+    img: 'https://ps.magentech.com/themes/sp_shop4u/modules/sphomeslider/images/sample-1.jpg',
     label: "Valentine Paul -",
     label2: 'Essential Collection',
     para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eius magnam earum placeat culpa modi ex tempora sint vitae soluta.',
@@ -20,7 +20,7 @@ const banner = [
     link: '#'
   },
   {
-    img: 'https://klbtheme.com/clotya/wp-content/uploads/2022/05/slider-05.jpg',
+    img: 'https://ps.magentech.com/themes/sp_shop4u/modules/sphomeslider/images/sample-3.jpg',
     label: "Making someone feel",
     label2: 'pretty is an art',
     para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eius magnam earum placeat culpa modi ex tempora sint vitae soluta.',
@@ -28,7 +28,7 @@ const banner = [
     link: '#'
   },
   {
-    img: 'https://klbtheme.com/clotya/wp-content/uploads/2022/05/slider-04.jpg',
+    img: 'https://ps.magentech.com/themes/sp_shop4u/modules/sphomeslider/images/sample-2.jpg',
     label: "Valentine Paul -",
     label2: 'Essential Collection',
     para: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eius magnam earum placeat culpa modi ex tempora sint vitae soluta.',
